@@ -1,7 +1,9 @@
+const addBy = require("./addBy");
+
 const add = (...arr) => {
-  console.log(arr);
   const result = arr.reduce((collector, current) => {
-    return collector + current;
+    const addByCollector = addBy(collector);
+    return addByCollector(current);
   }, 0);
   return result;
 };
