@@ -1,5 +1,5 @@
-const addBy = require("./addBy");
-const subtractBy = require("./subtractBy");
+const addBy = require("../hoc/addBy");
+const subtractBy = require("../hoc/subtractBy");
 
 const sum = (...arr) => {
   const result = arr.reduce((collector, current) => {
