@@ -1,6 +1,6 @@
 const max = require('./max')
 
-const average = (...arr) => {
+const mode = (...arr) => {
   const data = arr.reduce((collector, next) => {
       if (collector.has(next)) {
           collector.set(next, collector.get(next) + 1)
@@ -10,15 +10,17 @@ const average = (...arr) => {
       return collector
   }, new Map());
 
-  const entries = data.entries();
-  const sortedEntries = [...entries].sort((a,b) => a[1] - b[1])
+  let leader = 0;
+  let index = null;
+  
+  for (let [key, value] of data) {
+    if (value >= leader) {
+        leader = value;
+        index = key
+    }
+  }
 
-  const maxValue = max([...sortedEntries])
-
-  console.log(maxValue);
-
-  return "pie"
-
+  return index
 };
 
-module.exports = average;
+module.exports = mode;
